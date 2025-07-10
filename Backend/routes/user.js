@@ -16,6 +16,7 @@ router.post('/signup',async function(req,res){
             email:email
         })
         if (userExists){
+            console.log('User exists')
             return res.json({
                 response:"User already exists with that username"
             })
@@ -27,6 +28,7 @@ router.post('/signup',async function(req,res){
                 password:hashedPass,
                 name:name
             })
+            console.log("User successfully added")
             res.status(200).json({
                 response:"New user has been created",
                 data:newUser
