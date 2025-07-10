@@ -10,7 +10,7 @@ async function auth(req,res,next) {
         })
     }
     try{
-        let value=jwt.verify(token,process.env.SECRETKEY)
+        let value=jwt.verify(token,process.env.SECRET_KEY)
         let userId=value.userId
         req.userId=userId
         next()

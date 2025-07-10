@@ -9,7 +9,7 @@ app.use(express.json())
 
 //Route Imports
 const userRouter=require('./routes/user')
-const todoRouter=require('./routes/todo')
+const todoRouter=require('./routes/todos')
 
 //Mount Routes
 app.use('/user',userRouter)

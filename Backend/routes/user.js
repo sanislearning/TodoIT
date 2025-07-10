@@ -52,7 +52,7 @@ router.post('/signin',async function(req,res){
             console.log("Successful signin")
             res.status(200).json({
                 response:"You have successfully logged in",
-                token:jwt.sign({userId:userExists._id},process.env.SECRETKEY)
+                token:jwt.sign({userId:userExists._id},process.env.SECRET_KEY)
             })
         }
         else{
@@ -76,7 +76,7 @@ router.get('/dashboard',auth, async function(req,res){
         let tasks=await todoModel.find({
             userId:userId
         })
-        res.status(200).send(tasks)
+        res.status(200).json({tasks})
     }
     catch(error){
         res.status(500).json({
