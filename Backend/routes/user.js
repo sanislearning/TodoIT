@@ -35,6 +35,9 @@ router.post('/signup',async function(req,res){
             })
         }
     }
+    else{
+        console.log("Creation failed")
+    }
 })
 
 router.post('/signin',async function(req,res){

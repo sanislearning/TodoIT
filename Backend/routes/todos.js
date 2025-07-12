@@ -77,7 +77,7 @@ router.put('/update',auth,async function(req,res){
         console.log("The update failed")
         res.status(400).json({
             error:err,
-            rseponse:"Todo update failed"
+            response:"Todo update failed"
         })
     }
 })
