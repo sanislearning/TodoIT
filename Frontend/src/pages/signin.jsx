@@ -50,6 +50,16 @@ function Signin() {
         >
           Submit
         </button>
+
+        <p className="text-center mt-6 text-sm text-gray-500">
+          New here?{' '}
+          <span
+            onClick={() => navigate('/signup')}
+            className="text-black underline cursor-pointer hover:text-gray-700"
+          >
+            Create an account
+          </span>
+        </p>
       </div>
     </div>
   );

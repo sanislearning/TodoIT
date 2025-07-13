@@ -82,7 +82,7 @@ function Dashboard() {
 
   function signout() {
     localStorage.clear();
-    navigate('/signin');
+    navigate('/');
   }
 
   return (

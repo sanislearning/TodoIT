@@ -17,7 +17,7 @@ router.post('/signup',async function(req,res){
         })
         if (userExists){
             console.log('User exists')
-            return res.json({
+            return res.status(404).json({
                 response:"User already exists with that username"
             })
         }

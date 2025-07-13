@@ -25,7 +25,7 @@ function Signup() {
         name,
       });
       console.log('Server response: ', response.data);
-      navigate('/signin');
+      navigate('/');
     } catch (error) {
       console.error('Error during signup: ', error);
       alert(error.response?.data?.message || "Signup failed");
@@ -36,7 +36,7 @@ function Signup() {
     <div className="flex items-center justify-center min-h-screen bg-black text-white">
       <div className="bg-white text-black p-8 rounded-2xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
-        
+
         <input
           type="email"
           placeholder="Email"
@@ -54,12 +54,23 @@ function Signup() {
           ref={nameRef}
           className="w-full mb-6 px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-black"
         />
+
         <button
           onClick={connect}
           className="w-full bg-black text-white py-2 rounded-xl hover:bg-gray-900 transition"
         >
           Submit
         </button>
+
+        <p className="text-center mt-6 text-sm text-gray-500">
+          Already have an account?{' '}
+          <span
+            onClick={() => navigate('/')}
+            className="text-black underline cursor-pointer hover:text-gray-700"
+          >
+            Sign in here
+          </span>
+        </p>
       </div>
     </div>
   );
