@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const taskRef = useRef();
+  const navigate = useNavigate();
 
   async function updater() {
     try {
@@ -78,9 +80,21 @@ function Dashboard() {
     }
   }
 
+  function signout() {
+    localStorage.clear();
+    navigate('/signin');
+  }
+
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-xl bg-white text-black rounded-2xl shadow-lg p-8">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center px-4 py-10 relative">
+      <button
+        onClick={signout}
+        className="absolute top-4 right-4 bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-200 transition"
+      >
+        Sign Out
+      </button>
+
+      <div className="w-full max-w-xl bg-white text-black rounded-2xl shadow-lg p-8 mt-10">
         <h1 className="text-3xl font-bold text-center mb-6">📝 Task List</h1>
 
         <div className="flex gap-2 mb-6">
@@ -97,7 +111,7 @@ function Dashboard() {
           </button>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-96 overflow-y-auto pr-1">
           {tasks.map(task => (
             <div
               key={task._id}
