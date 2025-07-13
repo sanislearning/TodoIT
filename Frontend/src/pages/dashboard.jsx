@@ -58,6 +58,26 @@ function Dashboard() {
   }
   }
 
+  async function UpdateMe(id){
+    try{
+      const newTodo=prompt("Enter the updated todo:")
+      if (!newTodo||!newTodo.trim()) return
+
+      axios.put('http://localhost:3000/todos/update',{
+        todoId:id,
+        newTodo:newTodo
+      },{
+        headers:{
+          token:localStorage.getItem('token')
+        }
+      })
+      updater();
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <div>
       <h1>TaskList</h1>
@@ -65,7 +85,7 @@ function Dashboard() {
       <button onClick={create}>Create Todo</button>
       <div>
         {tasks.map(task=>
-        (<div key={task._id}>{task.todo}<button onClick={()=>DeleteMe(task._id)}>Delete</button>
+        (<div key={task._id}>{task.todo}<button onClick={()=>UpdateMe(task._id)}>Update</button><button onClick={()=>DeleteMe(task._id)}>Delete</button>
         </div>))}
       </div>
     </div>
